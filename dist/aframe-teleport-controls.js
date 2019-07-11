@@ -71,7 +71,7 @@
 	AFRAME.registerComponent('teleport-controls', {
 	  schema: {
 	    type: {default: 'parabolic', oneOf: ['parabolic', 'line']},
-	    button: {default: 'trackpad', oneOf: ['trackpad', 'trigger', 'grip', 'menu']},
+	    button: {default: 'trackpad', oneOf: ['trackpad', 'trigger', 'grip', 'menu', 'key']},
 	    startEvents: {type: 'array'},
 	    endEvents: {type: 'array'},
 	    collisionEntities: {default: ''},
@@ -141,8 +141,16 @@
 	        el.addEventListener(this.data.endEvents[i], this.onButtonUp);
 	      }
 	    } else {
-	      el.addEventListener(data.button + 'down', this.onButtonDown);
-	      el.addEventListener(data.button + 'up', this.onButtonUp);
+	      el.addEventListener(data.button + 'down', function(evt){
+		      if(evt.keyCode === 32){
+			      this.onButtonDown;
+		      }
+		      });
+	      el.addEventListener(data.button + 'up', function(evt){
+		      if(evt.keyCode === 32){
+			      this.onButtonUp;
+		      }
+		      });
 	    }
 
 	    this.queryCollisionEntities();
