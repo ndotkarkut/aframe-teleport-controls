@@ -141,12 +141,12 @@
 	        el.addEventListener(this.data.endEvents[i], this.onButtonUp);
 	      }
 	    } else {
-	      el.addEventListener(data.button + 'down', function(evt){
+	      window.addEventListener(data.button + 'down', function(evt){
 		      if(evt.keyCode === 32){
 			      this.onButtonDown;
 		      }
 		      });
-	      el.addEventListener(data.button + 'up', function(evt){
+	      window.addEventListener(data.button + 'up', function(evt){
 		      if(evt.keyCode === 32){
 			      this.onButtonUp;
 		      }
